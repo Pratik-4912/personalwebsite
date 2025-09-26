@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pratik Pawar Portfolio</title>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    /* Typing effect CSS */
+    #role {
+      font-weight: bold;
+      color: #ff6600;
+      border-right: 2px solid #ff6600;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    .home-section {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      height: 90vh;
+      text-align: center;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #ff6600;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">MyPortfolio</div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="hamburger" onclick="toggleMenu()">☰</div>
+    </nav>
+  </header>
+
+  <!-- Home Section -->
+  <section id="home" class="home-section">
+    <div class="home-content">
+      <h1>
+        Hi, I'm Pratik Pawar — <span id="role"></span>
+      </h1>
+      <p>A passionate AI & Data Science Engineer crafting modern websites with love & code.</p>
+      <a href="#projects" class="btn">View Projects</a>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="about-section">
+    <div class="about-container">
+      <div class="profile-pic">
+        <img src="image.jpeg" alt="Profile Picture">
+      </div>
+      <div class="about-text">
+        <h2>About Me</h2>
+        <p>
+          Hello! I'm Pratik Pawar, an AI & Data Science Engineer passionate about building intelligent systems 
+          that turn data into meaningful solutions. I enjoy solving complex problems and transforming them into 
+          clear, efficient, and impactful designs.  
+          <br><br>
+          When I’m not experimenting with algorithms or coding, you’ll find me exploring new ideas in technology, 
+          reading about future innovations, or sketching concepts for my next project.  
+          I believe true innovation comes from curiosity, persistence, and a fresh perspective.  
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="projects-section">
+    <div class="projects-container">
+      <h2>My Projects</h2>
+
+      <div class="project-card">
+        <h3>AI-Based Document Summarizer & QA</h3>
+        <p>
+          An intelligent system that summarizes documents and answers user queries using NLP techniques. 
+          Built with Python and AI models to provide concise summaries and context-aware responses.
+        </p>
+        <a href="https://github.com/Pratik-4912/AI-Based-Document-Summarizer-QA" class="btn" target="_blank">View Project on Github</a>
+      </div>
+
+      <div class="project-card">
+        <h3>Edu_lite — Free Interactive Learning Platform</h3>
+        <p>
+          Edu_lite is a free, interactive education platform built using Streamlit. It offers users access to courses, quizzes, and learning materials without needing to sign up or pay.  
+          Features include: 10+ free courses across programming, AI, data science, and web dev; interactive quizzes; clean, minimal UI; and seamless in-browser execution.  
+        </p>
+        <a href="https://github.com/Pratik-4912/Edu_lite" class="btn" target="_blank">View Project on GitHub</a>
+      </div>
+
+      <div class="project-card">
+        <h3>Email Classification System</h3>
+        <p>
+          A machine learning project that classifies emails into categories (spam vs. not spam)  
+          using NLP techniques. Built with Python and popular ML libraries to preprocess, train, and evaluate models.
+        </p>
+        <a href="https://github.com/Pratik-4912/Email-classification" class="btn" target="_blank">
+          View Project on GitHub
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact-section">
+    <div class="contact-container">
+      <h2>Contact Me</h2>
+      <p>If you'd like to collaborate, ask a question, or just say hello — feel free to talk with me</p>
+
+      <form class="contact-form">
+        <input type="text" placeholder="Your Name" required />
+        <input type="email" placeholder="Your Email" required />
+        <textarea rows="5" placeholder="Your Message" required></textarea>
+        <button type="submit" class="btn">Send Message</button>
+      </form>
+
+      <div class="contact-info">
+        <p><strong>Email:</strong> pratik8019@gmail.com</p>
+        <p><strong>WhatsApp:</strong> +91 93219 83599</p>
+        <p><strong>LinkedIn:</strong> 
+          <a href="https://www.linkedin.com/in/pratik-pawar-7a015a321/" target="_blank">
+            linkedin.com/in/pratik-pawar
+          </a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scroll to Top Button -->
+  <button id="scrollTopBtn" title="Go to top">↑</button>
+
+  <!-- JavaScript -->
+  <script src="script.js"></script>
+  <script>
+    // Rotating typing-style roles
+    const roles = ["AI & Data Science Engineer", "Software Engineer", "Tech Enthusiast"];
+    let roleIndex = 0;
+    let charIndex = 0;
+    const roleElement = document.getElementById("role");
+    let typingDelay = 100;
+    let erasingDelay = 50;
+    let newTextDelay = 1500;
+
+    function typeRole() {
+      if (charIndex < roles[roleIndex].length) {
+        roleElement.textContent += roles[roleIndex].charAt(charIndex);
+        charIndex++;
+        setTimeout(typeRole, typingDelay);
+      } else {
+        setTimeout(eraseRole, newTextDelay);
+      }
+    }
+
+    function eraseRole() {
+      if (charIndex > 0) {
+        roleElement.textContent = roles[roleIndex].substring(0, charIndex - 1);
+        charIndex--;
+        setTimeout(eraseRole, erasingDelay);
+      } else {
+        roleIndex = (roleIndex + 1) % roles.length;
+        setTimeout(typeRole, typingDelay);
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", function() { // start typing when DOM loaded
+      if(roles.length) setTimeout(typeRole, newTextDelay);
+    });
+  </script>
+
+</body>
+</html>
